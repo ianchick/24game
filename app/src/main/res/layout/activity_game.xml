@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_game"
     android:layout_width="match_parent"
@@ -8,10 +8,179 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
     tools:context="com.example.ian.a24game.GameActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#F5F5F5"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Time Remaining:"
+                android:textAlignment="center"/>
+            <TextView
+                android:id="@+id/time_remaining"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1:00"
+                android:textAlignment="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#D5F8FE"
+            android:layout_alignParentRight="true"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Best Score:"
+                android:textAlignment="center"/>
+            <TextView
+                android:id="@+id/best_score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0:06"
+                android:textAlignment="center"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+        <TextView
+            android:id="@+id/input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="input_view"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:background="#D7F7FE">
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_weight="1">
+            <ImageButton
+                android:background="@null"
+                android:scaleType="fitXY"
+                android:src="@drawable/eight"
+                android:layout_weight="1"
+                android:paddingTop="16dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="8dp"/>
+            <ImageButton
+                android:background="@null"
+                android:scaleType="fitXY"
+                android:src="@drawable/nine"
+                android:layout_weight="1"
+                android:paddingTop="16dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"/>
+            <ImageButton
+                android:background="@null"
+                android:scaleType="fitXY"
+                android:src="@drawable/five"
+                android:layout_weight="1"
+                android:paddingTop="16dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"/>
+            <ImageButton
+                android:background="@null"
+                android:scaleType="fitXY"
+                android:src="@drawable/one"
+                android:layout_weight="1"
+                android:paddingTop="16dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="16dp"/>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_weight="1">
+            <ImageButton
+                android:scaleType="fitXY"
+                android:src="@drawable/plus"
+                android:layout_weight="1"
+                android:background="@null"
+                android:paddingTop="16dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="8dp"/>
+            <ImageButton
+                android:scaleType="fitXY"
+                android:src="@drawable/minus"
+                android:layout_weight="1"
+                android:background="@null"
+                android:paddingTop="16dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"/>
+            <ImageButton
+                android:background="@null"
+                android:scaleType="fitXY"
+                android:src="@drawable/multiply"
+                android:layout_weight="1"
+                android:paddingTop="16dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"/>
+            <ImageButton
+                android:background="@null"
+                android:scaleType="fitXY"
+                android:src="@drawable/divide"
+                android:layout_weight="1"
+                android:paddingTop="16dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="16dp"/>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal">
+            <ImageView
+                android:layout_weight="1"
+                android:paddingTop="16dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="16dp"/>
+            <ImageButton
+                android:layout_weight="1"
+                android:background="@null"
+                android:scaleType="fitXY"
+                android:src="@drawable/clear"
+                android:paddingTop="16dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="16dp"
+                android:layout_gravity="center|center_horizontal"/>
+            <ImageButton
+                android:background="@null"
+                android:scaleType="fitXY"
+                android:src="@drawable/skip"
+                android:paddingTop="16dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="16dp"
+                android:layout_gravity="center|center_horizontal"
+                android:layout_weight="1"/>
+            <ImageView
+                android:paddingTop="16dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="16dp"
+                android:layout_weight="1"/>
+        </TableRow>
+    </TableLayout>
+
+
+</LinearLayout>
