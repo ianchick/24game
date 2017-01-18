@@ -1,8 +1,13 @@
 package com.example.ian.a24game;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
+import static android.R.attr.digits;
 import static android.R.attr.max;
+import static android.R.id.list;
 
 /**
  * Created by Ian on 1/13/2017.
@@ -10,26 +15,55 @@ import static android.R.attr.max;
 
 public class Util {
 
-    static int getRandomDigit(){
-        int max = 9;
-        int min = 1;
-        Random random = new Random();
-        int num = random.nextInt(max - min + 1) + min;
-        return num;
+    private static ArrayList<Integer> getUniqueDigits(){
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int i=1; i<10; i++) {
+            list.add(i);
+        }
+        Collections.shuffle(list);
+        ArrayList<Integer> digits = new ArrayList<>();
+        for (int i=0; i<4; i++) {
+            digits.add(list.get(i));
+        }
+        return digits;
     }
 
-    static int[] getDigits(){
-        int[] values = new int[4];
-        values[0] = getRandomDigit();
-        values[1] = getRandomDigit();
-        values[2] = getRandomDigit();
-        values[3] = getRandomDigit();
-
-        return values;
+    private static ArrayList<String> getUniqueOperators(){
+        ArrayList<String> list = new ArrayList<>();
+        list.add("+");
+        list.add("-");
+        list.add("*");
+        list.add("/");
+        Collections.shuffle(list);
+        ArrayList<String> operators = new ArrayList<>();
+        for (int i=0; i<3; i++) {
+            operators.add(list.get(i));
+        }
+        return operators;
     }
 
-    static boolean calculateTwentyFour(int a, int b, int c, int d, int total){
-
-        return true;
+    static ArrayList<Integer> getValidDigits(){
+        float total = 0;
+        ArrayList<Integer> digits = getUniqueDigits();
+        while (total != 24) {
+            digits = getUniqueDigits();
+            ArrayList<String> operators = getUniqueOperators();
+            total = digits.get(0);
+            for (int i=0; i < 3; i++){
+                if (operators.get(i) == "+"){
+                    total = total + digits.get(i+1);
+                }
+                if (operators.get(i) == "-"){
+                    total = total - digits.get(i+1);
+                }
+                if (operators.get(i) == "*"){
+                    total = total * digits.get(i+1);
+                }
+                if (operators.get(i) == "/"){
+                    total = total / digits.get(i+1);
+                }
+            }
+        }
+        return digits;
     }
 }
