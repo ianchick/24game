@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import static android.R.attr.button;
+import static com.example.ian.a24game.R.id.button4;
 
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener{
@@ -17,6 +19,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     String current_operation;
     boolean lastClickInt;
     ArrayList<Integer> active_numbers;
+    int numbersUsed;
 
     int seconds;
     Intent intent;
@@ -28,12 +31,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_game);
         current_int = 0;
         current_operation = "";
+        numbersUsed = 0;
+        lastClickInt = false;
         setActive_numbers();
 
         ImageButton b1 =(ImageButton)findViewById(R.id.button1);
         ImageButton b2 =(ImageButton)findViewById(R.id.button2);
         ImageButton b3 =(ImageButton)findViewById(R.id.button3);
-        ImageButton b4 =(ImageButton)findViewById(R.id.button4);
+        ImageButton b4 =(ImageButton)findViewById(button4);
         ImageButton plus =(ImageButton)findViewById(R.id.plus);
         ImageButton minus =(ImageButton)findViewById(R.id.minus);
         ImageButton multiply =(ImageButton)findViewById(R.id.multiply);
@@ -62,74 +67,63 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         TextView inputView = (TextView) findViewById(R.id.input);
         switch (view.getId()){
             case R.id.button1:
-                clickIntegerButton(active_numbers.get(0));
                 ImageButton button1 = (ImageButton) findViewById(R.id.button1);
-                button1.setEnabled(false);
-                gameOver();
+                clickIntegerButton(active_numbers.get(0), button1);
                 break;
             case R.id.button2:
-                clickIntegerButton(active_numbers.get(1));
                 ImageButton button2 = (ImageButton) findViewById(R.id.button2);
-                button2.setEnabled(false);
-                gameOver();
+                clickIntegerButton(active_numbers.get(1), button2);
                 break;
             case R.id.button3:
-                clickIntegerButton(active_numbers.get(2));
                 ImageButton button3 = (ImageButton) findViewById(R.id.button3);
-                button3.setEnabled(false);
-                gameOver();
+                clickIntegerButton(active_numbers.get(2), button3);
                 break;
             case R.id.button4:
-                clickIntegerButton(active_numbers.get(3));
                 ImageButton button4 = (ImageButton) findViewById(R.id.button4);
-                button4.setEnabled(false);
-                gameOver();
+                clickIntegerButton(active_numbers.get(3), button4);
                 break;
             case R.id.plus:
                 ImageButton button5 = (ImageButton) findViewById(R.id.plus);
-                button5.setEnabled(false);
-                clickOperator("+");
+                clickOperator("+", button5);
                 break;
             case R.id.minus:
                 ImageButton button6 = (ImageButton) findViewById(R.id.minus);
-                button6.setEnabled(false);
-                clickOperator("-");
+                clickOperator("-", button6);
                 break;
             case R.id.multiply:
                 ImageButton button7 = (ImageButton) findViewById(R.id.multiply);
-                button7.setEnabled(false);
-                clickOperator("x");
+                clickOperator("x", button7);
                 break;
             case R.id.divide:
                 ImageButton button8 = (ImageButton) findViewById(R.id.divide);
-                button8.setEnabled(false);
-                clickOperator("/");
+                clickOperator("/", button8);
                 break;
             case R.id.clear:
                 current_int = 0;
+                numbersUsed = 0;
                 current_operation = "";
                 lastClickInt = false;
                 inputView.setText("");
                 enableButtons();
                 break;
             case R.id.skip:
+                seconds = 0;
                 setActive_numbers();
                 current_operation = "";
                 current_int = 0;
-                lastClickInt = true;
+                numbersUsed = 0;
                 inputView.setText("");
-                seconds = 0;
+                lastClickInt = false;
                 enableButtons();
                 break;
         }
     }
 
-    protected void clickIntegerButton(int i){
-        if (current_operation==""){
-            current_int = i;
-            lastClickInt = true;
-            setFormula();
-        } else if (!lastClickInt){
+    protected void clickIntegerButton(int i, View button){
+        if (!lastClickInt){
+            if (current_int == 0){
+                current_int = i;
+            }
             switch (current_operation) {
                 case "+":
                     current_int = current_int + i;
@@ -146,15 +140,20 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             }
             current_operation = "";
             lastClickInt = true;
+            numbersUsed++;
+
+            button.setEnabled(false);
             setFormula();
+            gameOver();
         }
     }
 
-    protected void clickOperator(String s){
-        if (current_int!=0 & lastClickInt) {
+    protected void clickOperator(String s, View button){
+        if (lastClickInt) {
             current_operation = s;
             lastClickInt = false;
             setFormula();
+            button.setEnabled(false);
         }
     }
 
@@ -209,8 +208,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     protected void gameOver(){
-        if(current_int==24){
-            startActivity(intent);
+        if (numbersUsed == 4) {
+            if (current_int == 24) {
+                startActivity(intent);
+            }
         }
     }
 
@@ -218,7 +219,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.button1).setEnabled(true);
         findViewById(R.id.button2).setEnabled(true);
         findViewById(R.id.button3).setEnabled(true);
-        findViewById(R.id.button4).setEnabled(true);
+        findViewById(button4).setEnabled(true);
         findViewById(R.id.plus).setEnabled(true);
         findViewById(R.id.minus).setEnabled(true);
         findViewById(R.id.multiply).setEnabled(true);
