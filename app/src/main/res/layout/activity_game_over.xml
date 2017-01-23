@@ -31,13 +31,13 @@
             android:layout_height="wrap_content"
             android:textSize="24dp"
             android:gravity="center"
-            android:text="Time: 0:06"/>
+            android:id="@+id/timeView"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="24dp"
             android:gravity="center"
-            android:text="Best: 0:04"/>
+            android:id="@+id/bestTimeView"/>
     </LinearLayout>
 
     <TableLayout
@@ -53,7 +53,8 @@
                 android:paddingRight="8dp"
                 android:paddingTop="16dp"
                 android:paddingBottom="16dp"
-                android:scaleType="fitXY"/>
+                android:scaleType="fitXY"
+                android:onClick="home"/>
             <ImageButton
                 android:layout_weight="1"
                 android:src="@drawable/play"

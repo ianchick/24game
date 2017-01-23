@@ -32,8 +32,8 @@
                 android:text="Time:"
                 android:textAlignment="center" />
 
-            <TextView
-                android:id="@+id/timer"
+            <Chronometer
+                android:id="@+id/chronometer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center" />
@@ -58,7 +58,6 @@
                 android:id="@+id/best_score"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="0:06"
                 android:textAlignment="center" />
         </LinearLayout>
     </RelativeLayout>

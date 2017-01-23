@@ -1,11 +1,19 @@
 package com.example.ian.a24game;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Handler;
+import android.os.Message;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Chronometer;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -21,30 +29,40 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     ArrayList<Integer> active_numbers;
     int numbersUsed;
 
-    int seconds;
-    Intent intent;
-
+    long time;
+    Chronometer chronometer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
+        long bestScore = prefs.getLong("bestScore", 0);
+        int seconds = (int) (bestScore / 1000) % 60 ;
+        int minutes = (int) ((bestScore / (1000*60)) % 60);
+
+        TextView scoreView = (TextView)findViewById(R.id.best_score);
+
+        String timeString = String.format("%02d:%02d", minutes, seconds);
+        scoreView.setText(timeString);
+
         current_int = 0;
         current_operation = "";
         numbersUsed = 0;
         lastClickInt = false;
         setActive_numbers();
 
-        ImageButton b1 =(ImageButton)findViewById(R.id.button1);
-        ImageButton b2 =(ImageButton)findViewById(R.id.button2);
-        ImageButton b3 =(ImageButton)findViewById(R.id.button3);
-        ImageButton b4 =(ImageButton)findViewById(button4);
-        ImageButton plus =(ImageButton)findViewById(R.id.plus);
-        ImageButton minus =(ImageButton)findViewById(R.id.minus);
-        ImageButton multiply =(ImageButton)findViewById(R.id.multiply);
-        ImageButton divide =(ImageButton)findViewById(R.id.divide);
-        ImageButton clear =(ImageButton)findViewById(R.id.clear);
-        ImageButton skip =(ImageButton)findViewById(R.id.skip);
+        ImageButton b1 = (ImageButton) findViewById(R.id.button1);
+        ImageButton b2 = (ImageButton) findViewById(R.id.button2);
+        ImageButton b3 = (ImageButton) findViewById(R.id.button3);
+        ImageButton b4 = (ImageButton) findViewById(button4);
+        ImageButton plus = (ImageButton) findViewById(R.id.plus);
+        ImageButton minus = (ImageButton) findViewById(R.id.minus);
+        ImageButton multiply = (ImageButton) findViewById(R.id.multiply);
+        ImageButton divide = (ImageButton) findViewById(R.id.divide);
+        ImageButton clear = (ImageButton) findViewById(R.id.clear);
+        ImageButton skip = (ImageButton) findViewById(R.id.skip);
 
         b1.setOnClickListener(this);
         b2.setOnClickListener(this);
@@ -57,9 +75,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         clear.setOnClickListener(this);
         skip.setOnClickListener(this);
 
-
-        seconds = 0;
-        intent = new Intent(this, GameOverActivity.class);
+        chronometer = (Chronometer)findViewById(R.id.chronometer);
+        chronometer.start();
     }
 
     @Override
@@ -107,7 +124,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 enableButtons();
                 break;
             case R.id.skip:
-                seconds = 0;
                 setActive_numbers();
                 current_operation = "";
                 current_int = 0;
@@ -115,6 +131,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 inputView.setText("");
                 lastClickInt = false;
                 enableButtons();
+                chronometer.setBase(SystemClock.elapsedRealtime());
                 break;
         }
     }
@@ -210,7 +227,11 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     protected void gameOver(){
         if (numbersUsed == 4) {
             if (current_int == 24) {
+                time = SystemClock.elapsedRealtime() - chronometer.getBase();
+                Intent intent = new Intent(this, GameOverActivity.class);
+                intent.putExtra("TIME", time);
                 startActivity(intent);
+                finish();
             }
         }
     }
