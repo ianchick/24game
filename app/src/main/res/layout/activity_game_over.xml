@@ -43,35 +43,41 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="2">
 
         <TableRow>
             <ImageButton
                 android:layout_weight="1"
-                android:src="@drawable/homebutton"
-                android:paddingLeft="16dp"
+                android:adjustViewBounds="true"
+                android:background="@null"
+                android:onClick="home"
+                android:paddingBottom="16dp"
+                android:paddingLeft="4dp"
                 android:paddingRight="8dp"
                 android:paddingTop="16dp"
-                android:paddingBottom="16dp"
                 android:scaleType="fitXY"
-                android:onClick="home"/>
+                android:src="@drawable/homebutton" />
             <ImageButton
                 android:layout_weight="1"
-                android:src="@drawable/play"
-                android:paddingLeft="8dp"
+                android:adjustViewBounds="true"
+                android:background="@null"
+                android:onClick="play"
+                android:paddingBottom="16dp"
+                android:paddingLeft="4dp"
                 android:paddingRight="8dp"
                 android:paddingTop="16dp"
-                android:paddingBottom="16dp"
                 android:scaleType="fitXY"
-                android:onClick="play"/>
+                android:src="@drawable/play" />
             <ImageButton
                 android:layout_weight="1"
-                android:src="@drawable/leaderboard"
-                android:paddingLeft="8dp"
-                android:paddingRight="16dp"
-                android:paddingTop="16dp"
+                android:adjustViewBounds="true"
+                android:background="@null"
                 android:paddingBottom="16dp"
-                android:scaleType="fitXY"/>
+                android:paddingLeft="4dp"
+                android:paddingRight="8dp"
+                android:paddingTop="16dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/leaderboard" />
         </TableRow>
     </TableLayout>
 

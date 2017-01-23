@@ -3,6 +3,7 @@ package com.example.ian.a24game;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
@@ -80,40 +81,48 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-     public void onClick(View view){
+    public void onClick(View view){
         TextView inputView = (TextView) findViewById(R.id.input);
         switch (view.getId()){
             case R.id.button1:
                 ImageButton button1 = (ImageButton) findViewById(R.id.button1);
                 clickIntegerButton(active_numbers.get(0), button1);
+                button1.setColorFilter(Color.argb(150,200,200,200));
                 break;
             case R.id.button2:
                 ImageButton button2 = (ImageButton) findViewById(R.id.button2);
                 clickIntegerButton(active_numbers.get(1), button2);
+                button2.setColorFilter(Color.argb(150,200,200,200));
                 break;
             case R.id.button3:
                 ImageButton button3 = (ImageButton) findViewById(R.id.button3);
                 clickIntegerButton(active_numbers.get(2), button3);
+                button3.setColorFilter(Color.argb(150,200,200,200));
                 break;
             case R.id.button4:
                 ImageButton button4 = (ImageButton) findViewById(R.id.button4);
                 clickIntegerButton(active_numbers.get(3), button4);
+                button4.setColorFilter(Color.argb(150,200,200,200));
                 break;
             case R.id.plus:
                 ImageButton button5 = (ImageButton) findViewById(R.id.plus);
                 clickOperator("+", button5);
+                button5.setColorFilter(Color.argb(150,200,200,200));
                 break;
             case R.id.minus:
                 ImageButton button6 = (ImageButton) findViewById(R.id.minus);
                 clickOperator("-", button6);
+                button6.setColorFilter(Color.argb(150,200,200,200));
                 break;
             case R.id.multiply:
                 ImageButton button7 = (ImageButton) findViewById(R.id.multiply);
                 clickOperator("x", button7);
+                button7.setColorFilter(Color.argb(150,200,200,200));
                 break;
             case R.id.divide:
                 ImageButton button8 = (ImageButton) findViewById(R.id.divide);
                 clickOperator("/", button8);
+                button8.setColorFilter(Color.argb(150,200,200,200));
                 break;
             case R.id.clear:
                 current_int = 0;
@@ -121,9 +130,11 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 current_operation = "";
                 lastClickInt = false;
                 inputView.setText("");
+                resetFilters();
                 enableButtons();
                 break;
             case R.id.skip:
+                resetFilters();
                 setActive_numbers();
                 current_operation = "";
                 current_int = 0;
@@ -245,5 +256,26 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.minus).setEnabled(true);
         findViewById(R.id.multiply).setEnabled(true);
         findViewById(R.id.divide).setEnabled(true);
+    }
+
+    protected void resetFilters(){
+        ImageButton button1 = (ImageButton) findViewById(R.id.button1);
+        ImageButton button2 = (ImageButton) findViewById(R.id.button2);
+        ImageButton button3 = (ImageButton) findViewById(R.id.button3);
+        ImageButton button4 = (ImageButton) findViewById(R.id.button4);
+        ImageButton button5 = (ImageButton) findViewById(R.id.plus);
+        ImageButton button6 = (ImageButton) findViewById(R.id.minus);
+        ImageButton button7 = (ImageButton) findViewById(R.id.multiply);
+        ImageButton button8 = (ImageButton) findViewById(R.id.divide);
+
+        button1.clearColorFilter();
+        button2.clearColorFilter();
+        button3.clearColorFilter();
+        button4.clearColorFilter();
+        button5.clearColorFilter();
+        button6.clearColorFilter();
+        button7.clearColorFilter();
+        button8.clearColorFilter();
+
     }
 }

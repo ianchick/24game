@@ -14,9 +14,14 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:src="@drawable/logo"
+        android:maxWidth="256dp"
+        android:maxHeight="256dp"
+        android:layout_marginTop="65dp"
         android:layout_alignParentTop="true"
-        android:layout_centerInParent="true"
-        android:src="@drawable/logo"/>
+        android:layout_centerHorizontal="true"
+        android:adjustViewBounds="true"/>
+
 
 
     <TableLayout
@@ -31,12 +36,13 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@null"
+                android:adjustViewBounds="true"
                 android:paddingTop="16dp"
                 android:paddingBottom="16dp"
-                android:paddingLeft="16dp"
-                android:paddingRight="8dp"
-                android:src="@drawable/tutorial"
-                android:scaleType="fitXY"/>
+                android:paddingLeft="8dp"
+                android:paddingRight="4dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/tutorial" />
 
             <ImageButton
                 android:id="@+id/play"
@@ -46,9 +52,10 @@
                 android:background="@null"
                 android:paddingTop="16dp"
                 android:paddingBottom="16dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
                 android:src="@drawable/play"
+                android:adjustViewBounds="true"
                 android:scaleType="fitXY"
                 android:onClick="play"/>
 
@@ -60,10 +67,11 @@
                 android:background="@null"
                 android:paddingTop="16dp"
                 android:paddingBottom="16dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="16dp"
-                android:src="@drawable/leaderboard"
-                android:scaleType="fitXY"/>
+                android:adjustViewBounds="true"
+                android:paddingLeft="4dp"
+                android:paddingRight="8dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/leaderboard"/>
         </TableRow>
     </TableLayout>
 
