@@ -24,56 +24,42 @@
 
 
 
-    <TableLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
-
-        <TableRow>
             <ImageButton
                 android:id="@+id/tutorial"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:padding="8dp"
                 android:layout_weight="1"
                 android:background="@null"
-                android:adjustViewBounds="true"
-                android:paddingTop="16dp"
-                android:paddingBottom="16dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="4dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/tutorial" />
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:scaleType="centerInside"
+                android:src="@drawable/tutorial"
+                android:onClick="tutorial"/>
 
             <ImageButton
                 android:id="@+id/play"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:padding="8dp"
                 android:layout_weight="1"
                 android:background="@null"
-                android:paddingTop="16dp"
-                android:paddingBottom="16dp"
-                android:paddingLeft="4dp"
-                android:paddingRight="4dp"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:scaleType="centerInside"
                 android:src="@drawable/play"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY"
                 android:onClick="play"/>
 
             <ImageButton
                 android:id="@+id/leader"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
                 android:layout_weight="1"
                 android:background="@null"
-                android:paddingTop="16dp"
-                android:paddingBottom="16dp"
-                android:adjustViewBounds="true"
-                android:paddingLeft="4dp"
-                android:paddingRight="8dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/leaderboard"/>
-        </TableRow>
-    </TableLayout>
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:scaleType="centerInside"
+                android:src="@drawable/comingsoon"/>
+    </LinearLayout>
 
 
 </RelativeLayout>

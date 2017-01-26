@@ -17,4 +17,9 @@ public class Home extends AppCompatActivity {
         Intent intent = new Intent(Home.this, GameActivity.class);
         startActivity(intent);
     }
+
+    protected void tutorial(View view){
+        Intent intent = new Intent(Home.this, Tutorial1.class);
+        startActivity(intent);
+    }
 }
