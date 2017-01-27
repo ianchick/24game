@@ -50,7 +50,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         String timeString = String.format("%02d:%02d", minutes, seconds);
         scoreView.setText(timeString);
 
-        current_int = 0;
+        current_int = 9999;
         current_operation = "";
         numbersUsed = 0;
         lastClickInt = false;
@@ -119,19 +119,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 clickOperator("/", button8);
                 break;
             case R.id.clear:
-                current_int = 0;
-                numbersUsed = 0;
-                current_operation = "";
-                lastClickInt = false;
-                inputView.setText("");
-                resetFilters();
-                enableButtons();
+                clear();
                 break;
             case R.id.skip:
                 resetFilters();
                 setActive_numbers();
                 current_operation = "";
-                current_int = 0;
+                current_int = 9999;
                 numbersUsed = 0;
                 inputView.setText("");
                 lastClickInt = false;
@@ -143,7 +137,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     protected void clickIntegerButton(int i, View button){
         if (!lastClickInt){
-            if (current_int == 0){
+            if (current_int == 9999){
                 current_int = i;
             }
             switch (current_operation) {
@@ -231,6 +225,17 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         inputView.setText(text);
     }
 
+    protected void clear(){
+        TextView inputView = (TextView) findViewById(R.id.input);
+        current_int = 9999;
+        numbersUsed = 0;
+        current_operation = "";
+        lastClickInt = false;
+        inputView.setText("");
+        resetFilters();
+        enableButtons();
+    }
+
     protected void gameOver(){
         if (numbersUsed == 4) {
             if (current_int == 24) {
@@ -239,6 +244,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 intent.putExtra("TIME", time);
                 startActivity(intent);
                 finish();
+            } else {
+                clear();
             }
         }
     }
