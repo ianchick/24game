@@ -1,4 +1,4 @@
-package com.example.ian.a24game;
+package com.myapp.ian.a24game;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

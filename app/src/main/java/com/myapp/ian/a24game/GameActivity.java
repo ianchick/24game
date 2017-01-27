@@ -1,13 +1,9 @@
-package com.example.ian.a24game;
+package com.myapp.ian.a24game;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
-import android.os.Handler;
-import android.os.Message;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,12 +12,9 @@ import android.widget.Chronometer;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
-import static android.R.attr.button;
-import static com.example.ian.a24game.R.id.button4;
+import static com.myapp.ian.a24game.R.id.button4;
 
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener{

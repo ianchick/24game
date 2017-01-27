@@ -1,4 +1,4 @@
-package com.example.ian.a24game;
+package com.myapp.ian.a24game;
 
 import org.junit.Test;
 

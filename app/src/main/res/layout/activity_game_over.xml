@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.ian.a24game.GameOverActivity"
+    tools:context="com.myapp.ian.a24game.GameOverActivity"
     android:orientation="vertical"
     android:background="#F4F4F4">
 

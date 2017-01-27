@@ -1,13 +1,7 @@
-package com.example.ian.a24game;
+package com.myapp.ian.a24game;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
-
-import static android.R.attr.digits;
-import static android.R.attr.max;
-import static android.R.id.list;
 
 /**
  * Created by Ian on 1/13/2017.

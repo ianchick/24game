@@ -1,4 +1,4 @@
-package com.example.ian.a24game;
+package com.myapp.ian.a24game;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,13 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
-import java.util.concurrent.TimeUnit;
-
-import static android.R.attr.value;
-import static com.example.ian.a24game.R.id.bestTimeView;
 
 public class GameOverActivity extends AppCompatActivity {
 

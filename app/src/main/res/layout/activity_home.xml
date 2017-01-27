@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.ian.a24game.Home">
+    tools:context="com.myapp.ian.a24game.Home">
 
     <ImageView
         android:layout_width="wrap_content"
